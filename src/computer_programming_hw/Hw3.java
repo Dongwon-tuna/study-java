@@ -13,7 +13,7 @@ public class Hw3 {
 		
 		int number = 0 ; // 돈 단위별로 이동하게 해 주는 변수
 		
-		int [] howmany = new int[8]; // 갯수를 저장하느 배열
+		int [] howmany = new int[8]; // 갯수를 저장하는배열
 		
 	
 		
