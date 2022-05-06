@@ -1,12 +1,18 @@
-package java_study_2022;
+package computer_programming_hw;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
-import java.util.Arrays;
 
-public class Write_file {
+public class Quiz_5_4 {
 
 	public static void main(String[] args) {
+		
+		ArrayList<String> a = new ArrayList<String>();
+		
+		Scanner scanner = new Scanner(System.in);
+		
 		InputStreamReader in = null;
 		FileInputStream fin = null;
 		try {
@@ -14,10 +20,9 @@ public class Write_file {
 			in = new InputStreamReader(fin, "UTF-8"); // 올바른 문자 집합 지정
 			int c;
 			
-			
-			System.out.println("인코딩 문자 집합은 " + in.getEncoding());
 			while ((c = in.read()) != -1) {
 				System.out.print((char)c);
+				
 				
 
 			}
@@ -28,6 +33,7 @@ public class Write_file {
 			System.out.println("입출력 오류");
 		}
 
+		
 
 	}
 
