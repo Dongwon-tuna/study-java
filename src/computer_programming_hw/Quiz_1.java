@@ -1,12 +1,14 @@
 package computer_programming_hw;
 
+
+
 import java.io.*;
 import java.util.*;
 
-public class Quiz54 {
+public class Quiz_1 {
 private Vector<String> wordVector = new Vector<String>();
 	
-	public Quiz54() { }
+	public Quiz_1() { }
 	
 	private boolean readFile() { 
 		try {
@@ -68,9 +70,10 @@ private Vector<String> wordVector = new Vector<String>();
 	}
 	
 	public static void main(String[] args) {
-		Quiz54 ws = new Quiz54();
+		Quiz_1 ws = new Quiz_1();
 		ws.run();
 
 	
 	}
 }
+
