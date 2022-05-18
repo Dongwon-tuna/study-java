@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Quiz511_2 extends JFrame {
 	public Quiz511_2() {
-		super("계산기 프레임");
+		super("Chatting");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container c = getContentPane(); 
