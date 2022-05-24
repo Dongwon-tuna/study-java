@@ -73,6 +73,9 @@ public class MainActivity13 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub	
+				
+				txt5.setBounds((int)(Math.random() * 100) , 20, 190, 50); 
+				// 버튼 클릭을 함에 따라서 랜덤으로 움직이는 숫자.
 				int number = 3;
 				int[] arr =  new int[number]; //인원수만큼 배열 공간 할당
 				int[] members = new int[number]; 
