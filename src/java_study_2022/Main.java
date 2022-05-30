@@ -5,23 +5,74 @@ import java.awt.event.*;
  
 
 class MyDialog extends JDialog{
-	private JTextField tf = new JTextField(10); 
-	private JButton okButton = new JButton("전송하기"); 
-	
+	JTextField tf = new JTextField(10); 
+	JButton btn = new JButton("전송"); 
+	JTextArea ta = new JTextArea(7, 20);
 	public MyDialog(JFrame frame, String title) {
 		super(frame,title);
-		setLayout(new FlowLayout());
+
+		Container con = getContentPane();
+		con.setBackground(Color.GRAY);
+		con.setLayout(null);
+		
+		//JTextField text = new JTextField(10);
+		tf.setSize(150,55);
+		tf.setLocation(0,310);
 		add(tf);
-		add(okButton);
-		setSize(400, 200);
-	
-		okButton.addActionListener(new ActionListener() {
+		
+		//JTextArea ta;
+		//ta= new JTextArea(7, 20);
+		ta.setSize(230,290);
+		ta.setLocation(0,15);
+		add(ta);
+		
+		
+		
+		//JButton btn = new JButton("전송");
+		btn.setLocation(170,310);
+		btn.setSize(70,60);
+		add(btn);
+		
+		tf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false); 
+				JTextField t = (JTextField)e.getSource();
+				String csdfa = get();
+				ta.append(t.getText() + "\n"); 
+				t.setText(""); 
 			}
 		});
+		
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s11 = tf.getText();
+				
+				ta.append(s11 + "\n"); 
+				tf.setText("");
+			}
+		});
+	
+		
+		setSize(250,400);
+		
+		
 	}
-
+	
+	public String get() {
+		return tf.getText();
+	}
+	
+	/*public void dodo(String some) {
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s11 = some;
+				
+				ta.append(s11 + "\n"); 
+				tf.setText("");
+			}
+		});
+		
+	}
+	*/
 }
 
 public class Main extends JFrame {
@@ -53,25 +104,27 @@ public class Main extends JFrame {
         panel.add(logBtn);
  
         logBtn.addActionListener( new ActionListener() {  
-                        public void actionPerformed(ActionEvent e) {
+              public void actionPerformed(ActionEvent e) {
  
-                                String id = "Rewind";
-                                String pass = "1234";
+              String id = "hdw";
+              String pass = "1";
  
  
-                                    if(id.equals(txtID.getText()) &&  pass.equals(txtPass.getText())) {
+                   if(id.equals(txtID.getText()) &&  pass.equals(txtPass.getText())) {
  
                                     	
-                            				dialog.setVisible(true); // 다이얼로그를 출력하고 작동시킨다.
-                            				dialog1.setVisible(true); // 다이얼로그를 출력하고 작동시킨다.
-                            			
-                                            JOptionPane.showMessageDialog( null, "you have logged in successfully" );
-                                    } else {
+                    dialog.setVisible(true); // 
+                    //String cc1 = dialog.get();
+                    //dialog.dodo(cc1);
+                    dialog1.setVisible(true); 
+                    //dialog1.dodo(cc1);		
+                    JOptionPane.showMessageDialog( null, "you have logged in successfully" );
+                    } else {
  
-                                        JOptionPane.showMessageDialog( null , " you failed to log in ");
+                      JOptionPane.showMessageDialog( null , " you failed to log in ");
  
-                                    }
-                        }
+                           }
+                     }
                 } );
         add(panel);
         setVisible(true);
