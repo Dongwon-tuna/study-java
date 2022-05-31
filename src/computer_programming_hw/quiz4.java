@@ -8,13 +8,13 @@ import java.awt.event.*;
 
 
 
-//濡쒓렇?몄갹??留뚮뱶?몄슂 
+
 
 public class quiz4 extends JFrame{
 	
 	
 	quiz4(){
-		setTitle("login window");
+		setTitle("login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container ctp=getContentPane();
 		ctp.setBackground(Color.yellow);
@@ -83,7 +83,7 @@ public class quiz4 extends JFrame{
 			c.setBackground(Color.yellow);
 			c.setLayout(null);
 			
-			JLabel jf=new JLabel("?곷?諛⑹씠由?");
+			JLabel jf=new JLabel("ㅁㅁ");
 			jf.setLocation(180,0);
 			jf.setSize(100,50);
 			c.add(jf);
@@ -93,7 +93,7 @@ public class quiz4 extends JFrame{
 			jb.setSize(50,50);
 			c.add(jb);
 			
-			JButton j=new JButton("?뗫낫湲?");
+			JButton j=new JButton("ㄴㄴ");
 			j.setLocation(350,0);
 			j.setSize(50,50);
 			c.add(j);
@@ -120,16 +120,16 @@ public class quiz4 extends JFrame{
 			jt.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					ja.append("\t\t\t"+jt.getText()+":沅뚮퀝李?n");
-					ja1.append("沅뚮퀝李?"+jt.getText()+"\n");
+					ja.append("\t\t\t"+jt.getText()+"가");
+					ja1.append("나?"+jt.getText()+"\n");
 					jt.setText("");
 				}
 			});
 			jbff.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 										
-					ja.append("\t\t\t"+jt.getText()+":沅뚮퀝李?n");
-					ja1.append("沅뚮퀝李?"+jt.getText()+"\n");
+					ja.append("\t\t\t"+jt.getText()+"다");
+					ja1.append("라"+jt.getText()+"\n");
 					jt.setText("");
 				}
 			});
@@ -151,7 +151,7 @@ public class quiz4 extends JFrame{
 			c1.setBackground(Color.yellow);
 			c1.setLayout(null);
 			
-			JLabel jf1=new JLabel("?곷?諛⑹씠由?");
+			JLabel jf1=new JLabel("아?");
 			jf1.setLocation(180,0);
 			jf1.setSize(100,50);
 			c1.add(jf1);
@@ -161,7 +161,7 @@ public class quiz4 extends JFrame{
 			jb1.setSize(50,50);
 			c1.add(jb1);
 			
-			JButton j1=new JButton("?뗫낫湲?");
+			JButton j1=new JButton("아");
 			j1.setLocation(350,0);
 			j1.setSize(50,50);
 			c1.add(j1);
