@@ -33,5 +33,6 @@ public class TextAreaEx extends JFrame {
 		
 	public static void main(String [] args) {
 		new TextAreaEx();
+		System.out.println("0 ~ 100 사이의 난수 1개 발생 : " + (int)(Math.random()*100));
 	}
 }
