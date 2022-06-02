@@ -71,7 +71,7 @@ class GamePanel extends JPanel {
 		targetLabel.setLocation(0, 0);
 		targetLabel1.setLocation(300, 0);
 		//------------------------------------------------------------------------------------------------- 여기까지 완료
-		targetThread = new TargetThread(targetLabel);
+		targetThread = new TargetThread(targetLabel,targetLabel1);
 		targetThread1 = new TargetThread1(targetLabel1);
 	
 		targetThread.start();
@@ -98,10 +98,16 @@ class GamePanel extends JPanel {
 	
 	class TargetThread extends Thread {
 		private JComponent target;
-		public TargetThread(JComponent target) {
+		private JComponent target1;
+		public TargetThread(JComponent target,JComponent target1) {
 			this.target = target;
+			this.target1 = target1;
+			
+			
 			target.setLocation(0, 0);
 			target.getParent().repaint();
+			target1.setLocation(0, 0);
+			target1.getParent().repaint();
 		}	
 		
 		@Override
@@ -109,8 +115,13 @@ class GamePanel extends JPanel {
 			while(true) {
 				int x = target.getX()+((int)(Math.random() * 14)-5);
 				int y = target.getY()+((int)(Math.random() * 14)-5);
+				int x1 = target1.getX()+((int)(Math.random() * 14)-5);
+				int y1 = target1.getY()+((int)(Math.random() * 14)-5);
 				if(x > GamePanel.this.getWidth()) 
-					target.setLocation(0,0);
+					target1.setLocation(0,0);
+					
+					
+					
 				else 
 					target.setLocation(x, y);
 
