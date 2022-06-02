@@ -97,8 +97,7 @@ class GamePanel extends JPanel {
 			this.target1 = target1;
 			target.setLocation(0, 0);
 			target.getParent().repaint();
-			//target1.setLocation(0, 0);
-			//target1.getParent().repaint();
+			
 		}	
 		
 		public void run() {
@@ -145,18 +144,16 @@ class GamePanel extends JPanel {
 				}
 				catch(InterruptedException e) {
 					;
-					int xx =0;
-					target1.setLocation(x, y);
 					
 					targetThread2 = new TargetThread2(targetLabel2);
 					targetThread2.start();
-					
-					target.setLocation(x, y);
+					target1.setLocation(x, y);
+					//target.setLocation(x, y);
 					
 				
 					
-					target.getParent().repaint();
-					target1.getParent().repaint();
+					
+				
 					
 				
 					
@@ -174,8 +171,8 @@ class GamePanel extends JPanel {
 		private JComponent target2;
 		public TargetThread2(JComponent target2) {
 			this.target2 = target2;
-			target2.setLocation(0, 0);
-			target2.getParent().repaint();
+			//target2.setLocation(0, 0);
+			//target2.getParent().repaint();
 		}	
 		
 		public void run() {
@@ -221,8 +218,8 @@ class GamePanel extends JPanel {
 					sleep(50);
 				}
 				catch(InterruptedException e) {
-					target2.setLocation(0, 0);
-					target2.getParent().repaint();
+					//target2.setLocation(0, 0);
+					//target2.getParent().repaint();
 					try {
 						sleep(500); 
 					}catch(InterruptedException e2) {}					
