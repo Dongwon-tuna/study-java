@@ -22,13 +22,15 @@ public class ChatClient extends JFrame implements ActionListener {
 		receiver = new Receiver(); // 서버에서 받은 메시지를 출력할 컴퍼넌트
 		receiver.setEditable(false); // 편집 불가
 		
-		sender = new JTextField();
+		sender = new JTextField("");
 		sender.addActionListener(this);
+		
 
 		c.add(new JScrollPane(receiver),BorderLayout.CENTER); // 스크롤바를 위해  ScrollPane 이용
 		c.add(sender,BorderLayout.SOUTH);
+	
 		
-		setSize(400, 200); // 폭 400 픽셀, 높이 200 픽셀의 크기로 프레임 크기 설정
+		setSize(400, 650); // 폭 400 픽셀, 높이 200 픽셀의 크기로 프레임 크기 설정
 		setVisible(true); // 프레임이 화면에 나타나도록 설정
 		
 		try {
