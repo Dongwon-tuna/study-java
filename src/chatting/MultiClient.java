@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.JProgressBar;
 
 public class MultiClient implements ActionListener {
+   
    private Socket socket;
    private ObjectInputStream ois;
    private ObjectOutputStream oos;
@@ -23,11 +24,11 @@ public class MultiClient implements ActionListener {
    public boolean changepower = false;
    public boolean saypower = false;
    private boolean login = false;
-
+   
    Image img = new ImageIcon("C:\\Users\\Dongwon\\Desktop\\Temp\\wall1.jpg").getImage();
-
+   
    public MultiClient() {
-    
+	  
       jframe = new JFrame("Multi Chatting");
       login1 = new JFrame("Login");
       JProgressBar progressBar = new JProgressBar();
@@ -39,6 +40,7 @@ public class MultiClient implements ActionListener {
       jtf = new JTextField(20);
       idc = new JPasswordField(20);
       pass = new JTextField(20);
+      
       
 
       jta = new JTextArea(43, 43) {
@@ -153,9 +155,10 @@ public class MultiClient implements ActionListener {
       login1.setVisible(true);
    }
   
-   
+   	
 
    public void actionPerformed(ActionEvent e) {
+	 
       Object obj = e.getSource();
       String msg = jtf.getText();
 
@@ -196,7 +199,9 @@ public class MultiClient implements ActionListener {
             JOptionPane.showMessageDialog(jframe, "글을쓰세요", "경고", JOptionPane.WARNING_MESSAGE);
          } else {
             try {
-               oos.writeObject(id + "#" + msg);
+            	
+            			oos.writeObject(id + "#" + msg);
+            	
             } catch (IOException ee) {
                ee.printStackTrace();
             }
@@ -219,7 +224,7 @@ public class MultiClient implements ActionListener {
    }
    
    public void init() throws IOException {
-      socket = new Socket("192.168.0.6", 5000);
+      socket = new Socket("192.168.43.53", 5000);//ip주소 확인 필수
       System.out.println("connected...");
       oos = new ObjectOutputStream(socket.getOutputStream());
       ois = new ObjectInputStream(socket.getInputStream());

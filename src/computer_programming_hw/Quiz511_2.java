@@ -56,6 +56,7 @@ class SouthPanel extends JPanel {
 		
 		add(new JTextField(15));
 		add(new JButton("전송하기"));
+		add(new JButton("파일보내기"));
 		
 	}
 }

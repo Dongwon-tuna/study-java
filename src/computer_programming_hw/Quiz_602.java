@@ -151,15 +151,6 @@ class GamePanel extends JPanel {
 					//target.setLocation(x, y);
 					
 				
-					
-					
-				
-					
-				
-					
-				
-					
-					
 					try {
 						sleep(500); 
 					}catch(InterruptedException e2) {}					
