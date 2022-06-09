@@ -43,7 +43,7 @@ public class ChatClient extends JFrame implements ActionListener {
 		th.start();
 	}
 	private void setupConnection() throws IOException {
-		socket = new Socket("localhost", 9999); // 클라이언트 소켓 생성
+		socket = new Socket("192.168.0.5", 9999); // 클라이언트 소켓 생성
 		// System.out.println("연결됨");
 		receiver.append("서버에 연결 완료");
 		int pos = receiver.getText().length();
@@ -77,7 +77,9 @@ public class ChatClient extends JFrame implements ActionListener {
 	}
 	
 	@Override
+	
 	public void actionPerformed(ActionEvent e) { // JTextField에 <Enter> 키 처리
+		
 		if (e.getSource() == sender) {
 			String msg = sender.getText(); // 텍스트 필드에 사용자가 입력한 문자열
 			try {

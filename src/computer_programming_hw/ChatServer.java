@@ -1,6 +1,7 @@
 package computer_programming_hw;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Container;
 import java.awt.event.*;
 import java.io.*;
@@ -14,26 +15,35 @@ public class ChatServer extends JFrame implements ActionListener {
 	private Socket socket = null;
 	private Receiver receiver; // JTextArea를 상속받고 Runnable 인터페이스를 구현한 클래스로서 받은 정보를 담는 객체
 	private JTextField sender; // JTextField 객체로서 보내는 정보를 담는 객체
-
+	private Button start, end;
 	
 	public ChatServer() {
 		setTitle("서버 채팅 창"); // 프레임 타이틀
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //프레임 종료 버튼(X)을 클릭하면 프로그램 종료
 		Container c = getContentPane();
 		
-		c.setLayout(new BorderLayout()); //BorderLayout 배치관리자의 사용
+		c.setLayout(null); //BorderLayout 배치관리자의 사용
 		receiver = new Receiver(); // 클라이언트에서 받은 메시지를 출력할 컴퍼넌트
+		receiver.setBounds(10,10,470,310);
 		receiver.setEditable(false); // 편집 불가
 
 		sender = new JTextField();
 		sender.addActionListener(this);
+		sender.setBounds(0,400,100,30);
 
-		add(new JScrollPane(receiver),BorderLayout.CENTER); // 스크롤바를 위해  ScrollPane 이용
-		add(sender,BorderLayout.SOUTH);
+		add(receiver); // 스크롤바를 위해  ScrollPane 이용
+		add(sender);
 		
-		setSize(400, 200); // 폭 400 픽셀, 높이 200 픽셀의 크기로 프레임 크기 설정
+		setSize(500, 500); // 폭 400 픽셀, 높이 200 픽셀의 크기로 프레임 크기 설정
 		setVisible(true); // 프레임이 화면에 나타나도록 설정
-		
+		//------------------------------------------------------버튼추가
+		start = new Button("시작");
+		start.setBounds(100,400,50,30);
+		end = new Button("End");
+		end.setBounds(300,400,50,30);
+		add(start);
+		add(end);
+		//------------------------통신 시작점
 		try {
 			setupConnection();
 		} catch (IOException e) {

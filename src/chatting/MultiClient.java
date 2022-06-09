@@ -224,7 +224,7 @@ public class MultiClient implements ActionListener {
    }
    
    public void init() throws IOException {
-      socket = new Socket("192.168.43.53", 5000);//ip주소 확인 필수
+      socket = new Socket("172.16.211.12", 5000);//ip주소 확인 필수
       System.out.println("connected...");
       oos = new ObjectOutputStream(socket.getOutputStream());
       ois = new ObjectInputStream(socket.getInputStream());
