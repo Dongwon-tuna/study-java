@@ -56,46 +56,39 @@ public class ChatServer extends JFrame  {
 		add(start);
 		add(end);
 		//------------------------통신 시작점
-		int[]num = new int[2];
-		num[0]=1;
 		
 		start.addActionListener(new Myact());
-		if(count == 1) {
-			try {
-				setupConnection();
-			} catch (IOException e) {
-				handleError(e.getMessage());
-			}
-			
-		}
-		System.out.println(count+2);
-		System.out.println(num[0]);
 		
+			
+			
+		
+		 
 	}
+	
+	
 	
 	private class Myact implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
+			t1.append("\n서버 시작됨");
+			
+			
 			JButton b = (JButton)e.getSource();
+			JButton b1 = (JButton)e.getSource();
 			if(b.getText().equals("Start")) {
-				//num[0]=1;
-				t1.append("\n서버 시작됨");
-				synchronized(this) {
-					count = 1;
-				}
-				System.out.print(count);
-				//System.out.println(num[0]);
-				
-				//Thread th = new Thread(receiver); // 상대로부터 메시지 수신을 위한 스레드 생성
-				//th.start();
-				/*
 				try {
 					setupConnection();
 				} catch (IOException e1) {
 					handleError(e1.getMessage());
 				}
-				*/
-			}	
+				//num[0]=1;
+				//Thread th = new Thread(receiver); // 상대로부터 메시지 수신을 위한 스레드 생성
+				//th.start();
+				
+			}
+			else {
+				t1.append("몰라");
+			}
 			
 		}
 	
