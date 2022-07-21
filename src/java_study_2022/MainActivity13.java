@@ -34,7 +34,7 @@ public class MainActivity13 {
 		
 		
 		//TODO 부모 프레임 생성
-		JFrame frm = new JFrame("버튼 클릭 카운트");
+		JFrame frm = new JFrame("");
  
 		//TODO 부모 프레임 크기 설정 (가로, 세로)
 		frm.setSize(350, 300);

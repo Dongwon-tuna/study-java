@@ -25,10 +25,16 @@ public class Quiz_602 extends JFrame {
 class GamePanel extends JPanel {
 	private TargetThread targetThread=null;
 	private TargetThread2 targetThread2=null;
+	private TargetThread3 targetThread3=null;
+	private TargetThread4 targetThread4=null;
+	private TargetThread5 targetThread5=null;
 	private JLabel baseLabel = new JLabel();
 	private JLabel bulletLabel = new JLabel();
 	private JLabel targetLabel;
 	private JLabel targetLabel2;
+	private JLabel targetLabel3;
+	private JLabel targetLabel4;
+	private JLabel targetLabel5;
 	
 	public GamePanel() {
 		setLayout(null);
@@ -44,11 +50,24 @@ class GamePanel extends JPanel {
 		ImageIcon img2 = new ImageIcon("C:\\Users\\Dongwon\\Desktop\\Temp/chicken.jpg");
 		targetLabel2 = new JLabel(img2);
 		targetLabel2.setSize(img2.getIconWidth(),img2.getIconWidth());
+		
+		targetLabel3 = new JLabel(img);
+		targetLabel3.setSize(img.getIconWidth(),img.getIconWidth());
+		targetLabel4 = new JLabel(img);
+		targetLabel4.setSize(img.getIconWidth(),img.getIconWidth());
+		
+		targetLabel5 = new JLabel(img);
+		targetLabel5.setSize(img.getIconWidth(),img.getIconWidth());
+		
+		
 
 		bulletLabel.setSize(10,10);
 		bulletLabel.setOpaque(true);
 		bulletLabel.setBackground(Color.RED);
 		add(baseLabel);
+		add(targetLabel5);
+		add(targetLabel4);
+		add(targetLabel3);
 		add(targetLabel2);
 		add(targetLabel);
 		add(bulletLabel);
@@ -66,9 +85,15 @@ class GamePanel extends JPanel {
 		bulletLabel.setLocation(this.getWidth()/2 - 5, this.getHeight()-50);			
 		targetLabel.setLocation(0, 0);
 		targetLabel2.setLocation(200, 300);
-		
-		targetThread = new TargetThread(targetLabel,targetLabel2);
+		targetLabel3.setLocation(2000, 3000);
+		targetLabel4.setLocation(2000, 3000);
+		targetLabel5.setLocation(2000, 3000);
+		targetThread = new TargetThread(targetLabel,targetLabel2, targetLabel3, targetLabel4,targetLabel5);
 		targetThread.start();
+		targetThread2 = new TargetThread2(targetLabel);
+		targetThread2.start();
+		//targetThread3 = new TargetThread3(targetLabel);
+		//targetThread3.start();
 		//targetThread2 = new TargetThread2(targetLabel2);
 		//targetThread2.start();
 		
@@ -92,9 +117,16 @@ class GamePanel extends JPanel {
 	class TargetThread extends Thread {
 		private JComponent target;
 		private JComponent target1;
-		public TargetThread(JComponent target,JComponent target1) {
+		private JComponent target2;
+		private JComponent target3;
+		private JComponent target4;
+		public TargetThread(JComponent target,JComponent target1, JComponent target2, JComponent target3, JComponent target4) {
 			this.target = target;
 			this.target1 = target1;
+			this.target2 = target2;
+			this.target3 = target3;
+			this.target4 = target4;
+			
 			target.setLocation(0, 0);
 			target.getParent().repaint();
 			
@@ -147,8 +179,19 @@ class GamePanel extends JPanel {
 					
 					targetThread2 = new TargetThread2(targetLabel2);
 					targetThread2.start();
+					
+					targetThread3 = new TargetThread3(targetLabel3);
+					targetThread3.start();
+					
+					targetThread4 = new TargetThread4(targetLabel4);
+					targetThread4.start();
+					
+					targetThread5 = new TargetThread5(targetLabel5);
+					targetThread5.start();
+					
+					target2.setLocation(x, y);
 					target1.setLocation(x, y);
-					//target.setLocation(x, y);
+					target.setLocation(x, y);
 					
 				
 					try {
@@ -160,7 +203,191 @@ class GamePanel extends JPanel {
 	}
 	class TargetThread2 extends Thread {
 		private JComponent target2;
+		
 		public TargetThread2(JComponent target2) {
+			this.target2 = target2;
+			//target2.setLocation(0, 0);
+			//target2.getParent().repaint();
+		}	
+		
+		public void run() {
+			int xn = 0;
+			int yn = 0;
+			int rand = (int)(Math.random()*20 + 1);
+			int rand2 = (int)(Math.random()*20 + 1);
+			while(true) {
+				int x = target2.getX();
+				int y = target2.getY();
+				
+				if((xn%2) ==  0) {
+					x = target2.getX()+rand;
+				}
+				else
+					x = target2.getX()-rand;
+				if((yn%2) ==  0) {
+					y = target2.getY()+rand2;
+				}
+				else
+					y = target2.getY()-rand2;
+				if(x > GamePanel.this.getWidth()-target2.getWidth()) {
+					target2.setLocation(GamePanel.this.getWidth()-target2.getWidth(), y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;}
+				else if(x < 0) {
+					target2.setLocation(0, y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;
+				}
+				else if(y > GamePanel.this.getHeight()-target2.getHeight()) {
+					target2.setLocation(x, GamePanel.this.getHeight()-target2.getHeight());
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else if(y < 0) {
+					target2.setLocation(x, 0);
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else 
+					target2.setLocation(x, y);
+				target2.getParent().repaint();
+				try {
+					sleep(50);
+				}
+				catch(InterruptedException e) {
+					//target2.setLocation(0, 0);
+					//target2.getParent().repaint();
+					try {
+						sleep(500); 
+					}catch(InterruptedException e2) {}					
+				}
+			}
+		}			
+	}
+	
+	class TargetThread3 extends Thread {
+		private JComponent target2;
+		public TargetThread3(JComponent target2) {
+			this.target2 = target2;
+			//target2.setLocation(0, 0);
+			//target2.getParent().repaint();
+		}	
+		
+		public void run() {
+			int xn = 0;
+			int yn = 0;
+			int rand = (int)(Math.random()*20 + 1);
+			int rand2 = (int)(Math.random()*20 + 1);
+			while(true) {
+				int x = target2.getX();
+				int y = target2.getY();
+				
+				if((xn%2) ==  0) {
+					x = target2.getX()+rand;
+				}
+				else
+					x = target2.getX()-rand;
+				if((yn%2) ==  0) {
+					y = target2.getY()+rand2;
+				}
+				else
+					y = target2.getY()-rand2;
+				if(x > GamePanel.this.getWidth()-target2.getWidth()) {
+					target2.setLocation(GamePanel.this.getWidth()-target2.getWidth(), y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;}
+				else if(x < 0) {
+					target2.setLocation(0, y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;
+				}
+				else if(y > GamePanel.this.getHeight()-target2.getHeight()) {
+					target2.setLocation(x, GamePanel.this.getHeight()-target2.getHeight());
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else if(y < 0) {
+					target2.setLocation(x, 0);
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else 
+					target2.setLocation(x, y);
+				target2.getParent().repaint();
+				try {
+					sleep(50);
+				}
+				catch(InterruptedException e) {
+					//target2.setLocation(0, 0);
+					//target2.getParent().repaint();
+					try {
+						sleep(500); 
+					}catch(InterruptedException e2) {}					
+				}
+			}
+		}			
+	}
+	
+	class TargetThread5 extends Thread {
+		private JComponent target2;
+		public TargetThread5(JComponent target2) {
+			this.target2 = target2;
+			//target2.setLocation(0, 0);
+			//target2.getParent().repaint();
+		}	
+		
+		public void run() {
+			int xn = 0;
+			int yn = 0;
+			int rand = (int)(Math.random()*20 + 1);
+			int rand2 = (int)(Math.random()*20 + 1);
+			while(true) {
+				int x = target2.getX();
+				int y = target2.getY();
+				
+				if((xn%2) ==  0) {
+					x = target2.getX()+rand;
+				}
+				else
+					x = target2.getX()-rand;
+				if((yn%2) ==  0) {
+					y = target2.getY()+rand2;
+				}
+				else
+					y = target2.getY()-rand2;
+				if(x > GamePanel.this.getWidth()-target2.getWidth()) {
+					target2.setLocation(GamePanel.this.getWidth()-target2.getWidth(), y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;}
+				else if(x < 0) {
+					target2.setLocation(0, y);
+					rand = (int)(Math.random()*20 + 1);
+					xn++;
+				}
+				else if(y > GamePanel.this.getHeight()-target2.getHeight()) {
+					target2.setLocation(x, GamePanel.this.getHeight()-target2.getHeight());
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else if(y < 0) {
+					target2.setLocation(x, 0);
+					rand2 = (int)(Math.random()*20 + 1);
+					yn++;}
+				else 
+					target2.setLocation(x, y);
+				target2.getParent().repaint();
+				try {
+					sleep(50);
+				}
+				catch(InterruptedException e) {
+					//target2.setLocation(0, 0);
+					//target2.getParent().repaint();
+					try {
+						sleep(500); 
+					}catch(InterruptedException e2) {}					
+				}
+			}
+		}			
+	}
+	
+	class TargetThread4 extends Thread {
+		private JComponent target2;
+		public TargetThread4(JComponent target2) {
 			this.target2 = target2;
 			//target2.setLocation(0, 0);
 			//target2.getParent().repaint();
@@ -278,4 +505,3 @@ class GamePanel extends JPanel {
 		}
 	}	
 }
-

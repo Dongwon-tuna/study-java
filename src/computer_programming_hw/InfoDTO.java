@@ -1,10 +1,10 @@
-package chatting;
+package computer_programming_hw;
 
 import java.util.*;
 import java.io.*;
 
 enum Info {
-	JOIN, EXIT1, SEND
+	JOIN, EXIT, SEND
 }
 
 class InfoDTO implements Serializable{
